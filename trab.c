@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-/* Aluno: João Pedro Schio Ortega - RGA 2021.1905.022-5
-   discente: Francisco Eloi Soares de Araujo */
+/* Docente: João Pedro Schio Ortega - RGA 2021.1905.022-5
+   Discente: Francisco Eloi Soares de Araujo */
 
 
 
