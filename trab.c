@@ -8,14 +8,14 @@
 
 
 
-
+// Estrutura pedida no trabalho
 typedef struct{
     int codigo;
     int validade;
 }REG;
 
 
-
+// Estrutura para a lista de registros
 typedef struct lista{
     REG reg;
     struct lista *prox;
@@ -23,14 +23,14 @@ typedef struct lista{
 }cel;
 
 
-
+// função para trocar dois registros, mas manter a ordem da lista
 void troca (REG *a, REG*b){
     REG aux = *a;
     *a = *b;
     *b = aux;
 }
 
-
+// Sort por codigo
 void selection (cel *lst, int *n){
     cel *i, *j, *min;
     for (i = lst; i->prox != NULL; i = i->prox){
@@ -45,7 +45,7 @@ void selection (cel *lst, int *n){
     }
 }
 
-
+// sort por validade
 void insertion (cel *lst, int *n){
     cel *i, *j;
     for (i = lst; i->prox != NULL; i = i->prox){
@@ -65,13 +65,23 @@ void insertion (cel *lst, int *n){
 int main(void){
     
     cel *lista,*p;
+    // decidi fazer o uso de listas duplamente encadeadas, pois é uma estrutura onde eu não preciso saber
+    // o tamanho da lista,portanto esse código irá rodar para qualquer tamanho de entrada.
     p = lista = (cel*)malloc(sizeof(cel));
     p -> ant = NULL;
     p -> prox = NULL;
+
+
+
+    // variaveis auxiliares
     REG aux;
     FILE *entrada = fopen("produtos.ent","r");
     int TrocasS = 0;
     int TrocasI = 0;
+
+    
+
+
     while(fscanf(entrada,"%d %d",&aux.codigo,&aux.validade) != EOF){
         p -> prox = (cel*)malloc(sizeof(cel));
         p -> prox -> ant = p;
@@ -79,6 +89,11 @@ int main(void){
         p -> reg = aux;
         p -> prox = NULL;
     }
+    fclose(entrada);
+
+
+
+
 
     selection(lista, &TrocasS);
     insertion(lista, &TrocasI);
